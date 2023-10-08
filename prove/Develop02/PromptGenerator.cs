@@ -13,8 +13,8 @@ public class PromptGenerator
         Prompts.Add("What was the strongest emotion I felt today?");
         Prompts.Add("If I had one thing I could do over today, what would it be?");
         Prompts.Add("What was best food that I ate today?");
-        Prompts.Add("What was the thing you did the most today");
-        Prompts.Add("What was the thing you did the least today");
+        Prompts.Add("What was the thing you did the most today?");
+        Prompts.Add("What was the thing you did the least today?");
         
         Random randomGenerator = new Random();
         int number = randomGenerator.Next(0, Prompts.Count);

@@ -1,5 +1,7 @@
 using System;
-using System.IO; 
+using System.IO;
+using System.Xml;
+using Microsoft.VisualBasic.FileIO;
 
 public class Journal
 {
@@ -22,12 +24,30 @@ public class Journal
         
         string[] lines = System.IO.File.ReadAllLines(filename);
 
+        Entry entry = new Entry();
         foreach (string line in lines)
-        {
-            string[] parts = line.Split(",");
+        {      
+            // It's supposed to go through the line, delete the extra strings
+            string newLine = line.Replace("Date: ","").Replace("Prompt: ", "").Replace("Answer: ", "");
+            string[] parts = newLine.Split(" - ");
 
-            string firstName = parts[0];
-            string lastName = parts[1];
+            // Since I assume it can only go through one line at a time,
+            // depending on the amount of items that the parts list gathered after the split,
+            // the line will be processed accordingly.
+            if (parts.Length == 2)
+            {   
+                entry._date = parts[0];
+                entry._prompt = parts[1];
+            }
+            else
+            {
+                // I expect for the order to be always date and prompt first and the response second
+                // So when the response gets saved, and the object has all the atributtes it needed for 
+                // the entry to be completed and added to the list of entries.
+                entry._response = parts[0];
+                entries.Add(entry);
+            }
+            // And the cycle repeats again, but it doesn't load them as intended.
         }
     }
     public void Save(string filename)
