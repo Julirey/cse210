@@ -24,30 +24,16 @@ public class Journal
         
         string[] lines = System.IO.File.ReadAllLines(filename);
 
-        Entry entry = new Entry();
         foreach (string line in lines)
         {      
-            // It's supposed to go through the line, delete the extra strings
-            string newLine = line.Replace("Date: ","").Replace("Prompt: ", "").Replace("Answer: ", "");
-            string[] parts = newLine.Split(" - ");
+            string[] parts = line.Split("~~");
 
-            // Since I assume it can only go through one line at a time,
-            // depending on the amount of items that the parts list gathered after the split,
-            // the line will be processed accordingly.
-            if (parts.Length == 2)
-            {   
+                Entry entry = new Entry();
                 entry._date = parts[0];
                 entry._prompt = parts[1];
-            }
-            else
-            {
-                // I expect for the order to be always date and prompt first and the response second
-                // So when the response gets saved, and the object has all the atributtes it needed for 
-                // the entry to be completed and added to the list of entries.
-                entry._response = parts[0];
+                entry._response = parts[2];
                 entries.Add(entry);
-            }
-            // And the cycle repeats again, but it doesn't load them as intended.
+            
         }
     }
     public void Save(string filename)
@@ -55,9 +41,11 @@ public class Journal
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
             foreach (Entry entry in entries)
-            outputFile.WriteLine(entry.GetDisplayString());
+            outputFile.WriteLine($"{entry._date}~~{entry._prompt}~~{entry._response}");
         }
     }
+
+    // Counts and prints the total amount of words written in the responses of the journal 
     public void Stats()
     {   
         int wordCount = 0;
