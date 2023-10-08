@@ -48,21 +48,25 @@ public class Journal
     // Counts and prints the total amount of words written in the responses of the journal 
     public void Stats()
     {   
+        // Sets the counter to zero 
         int wordCount = 0;
 
+        // Goes through the responses of each entry 
         foreach (Entry entry in entries)
-        {
+        {   
             string line = entry._response;
 
+            // Removes the extra characters of the string 
             var charsToRemove = new string[] {",", ".", ";"};
-
             foreach (var c in charsToRemove)
             {
                 line = line.Replace(c, string.Empty);
             }
 
+            // Splits the string into words
             string[] words = line.Split(" ");
             
+            // Sums the amount of words to the total
             wordCount += words.Length;
         }
 
