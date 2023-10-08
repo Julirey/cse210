@@ -15,6 +15,7 @@ public class PromptGenerator
         Prompts.Add("What was best food that I ate today?");
         Prompts.Add("What was the thing you did the most today?");
         Prompts.Add("What was the thing you did the least today?");
+        Prompts.Add("Where did you go today to?");
         
         Random randomGenerator = new Random();
         int number = randomGenerator.Next(0, Prompts.Count);

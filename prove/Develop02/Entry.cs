@@ -8,8 +8,8 @@ public class Entry
 
     public string GetDisplayString()
     {
-        string displayString = @$"Date: {_date} - Prompt: {_prompt}
-Answer: {_response}";
+        string displayString = @$"> Date: {_date} - Prompt: {_prompt}
+        Answer: {_response}";
         return displayString;
     }
 }
