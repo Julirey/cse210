@@ -1,6 +1,9 @@
 using System;
 using System.IO; 
 
+// To exceed requirements, I added the option to show the total amount of words written 
+// in the responses of the journal, it can be accessed via the program menu by selecting
+// option 5.
 class Program
 {
     static void Main(string[] args)
@@ -58,6 +61,8 @@ class Program
                 filename = Console.ReadLine();
                 journal.Save(filename);
             }
+
+            // To exceed requirements.
             else if (choice == "5")
             {
                 journal.Stats();
