@@ -42,8 +42,12 @@ public class Scripture
     {
         int number;
         
+        // Will occur up to three times unless every word
+        // is hidden during the process. 
         for (int i = 0; i < 3; i++) 
-        {
+        {   
+            // Will only stop once it finds a word that 
+            // isn't hidden, and hides it.
             while(true)
             {
                 Random randomGenerator = new Random();
@@ -57,7 +61,20 @@ public class Scripture
                     break;
                 }
             }
+            if (IsCompletelyHidden() == true)
+            {
+                break;
+            }
         } 
+    }
+
+    //To exceed requirements
+    public void ShowWords()
+    {
+        foreach (Word word in _scripture)
+        {
+            word.Show();
+        }
     }
 
     public bool IsCompletelyHidden()

@@ -36,7 +36,7 @@ public class Reference
 
         if (_verseEnd == -1)
         {
-             renderedReference = $"{_book} {_chapter}:{_verseStart}";
+            renderedReference = $"{_book} {_chapter}:{_verseStart}";
             return renderedReference;
         }
         else 
