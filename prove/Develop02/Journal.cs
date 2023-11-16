@@ -41,7 +41,9 @@ public class Journal
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
             foreach (Entry entry in entries)
-            outputFile.WriteLine($"{entry._date}~~{entry._prompt}~~{entry._response}");
+            {
+                outputFile.WriteLine($"{entry._date}~~{entry._prompt}~~{entry._response}");
+            }
         }
     }
 
