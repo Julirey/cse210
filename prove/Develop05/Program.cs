@@ -1,5 +1,15 @@
 using System;
 
+// To exceed requirements I added a log that keeps track
+// of the total amount of goals the program has, and how many
+// of each type of goal, as well as displaying how many of 
+// them have been completed and how many are left to complete
+// (Eternal goals are NOT included in the completion counter
+// due to not being possible to complete).
+
+// A couple of methods where added to the Journal class
+// to achieve the desired results.
+
 class Program
 {
     static void Main(string[] args)
@@ -101,6 +111,16 @@ class Program
                 choice = Console.ReadLine();
                 journal.SelectEvent(int.Parse(choice));
                 
+                Console.WriteLine();
+                Console.Write("Press Enter to go back to the menu ");
+                Console.ReadLine();
+            }
+            // To exceed requirements
+            // Display Statistics 
+            else if (choice == "6")
+            {
+                journal.DisplayStats();
+
                 Console.WriteLine();
                 Console.Write("Press Enter to go back to the menu ");
                 Console.ReadLine();

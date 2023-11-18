@@ -25,7 +25,8 @@ public class Journal
         Console.WriteLine("  3. Save Goals");
         Console.WriteLine("  4. Load Goals");
         Console.WriteLine("  5. Record Event");
-        Console.WriteLine("  6. Quit");
+        Console.WriteLine("  6. Stats");
+        Console.WriteLine("  0. Quit");
     }
 
     public void DisplayList()
@@ -112,4 +113,44 @@ public class Journal
             Console.WriteLine("That Goal has already been completed.");
         }
     }
+
+    // To exceed requirements
+    public void DisplayStats()
+    {
+        Console.WriteLine("----- Statistics -----");
+        Console.WriteLine();
+        Console.WriteLine($"Total amount of goals: {_goals.Count}");
+        Console.WriteLine();
+        Console.WriteLine($"Simple Goals:     {GetOccurences(typeof(Simple))}");
+        Console.WriteLine($"Eternal Goals:    {GetOccurences(typeof(Eternal))}");
+        Console.WriteLine($"Checklist Goals:  {GetOccurences(typeof(Checklist))}");
+        Console.WriteLine();
+        Console.WriteLine($"Completed: {CountCompleted()} of {GetOccurences(typeof(Simple)) + GetOccurences(typeof(Checklist))}");
+        Console.WriteLine("(Eternal Goals are not counted towards the total completed goals)");
+    }
+
+    // To exceed requirements
+    public int CountCompleted()
+    {
+        int count = 0;
+        foreach (Goal g in _goals)
+            if (g.IsCompleted()) 
+            {
+                count++;
+            }
+        return count;
+    }
+    
+    // To exceed requirements
+    public int GetOccurences(Type goalType)
+    {
+        int count = 0;
+        foreach (Goal g in _goals)
+            if (g.GetType() == goalType) 
+            {
+                count++;
+            }
+        return count;
+    }
+    
 }
