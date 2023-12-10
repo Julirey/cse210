@@ -17,9 +17,14 @@ public class Comment
         _text = text;
     }
     
+    // SMT I would make it more clear what these values represent by adding labels to the values
     // Methods
     public string GetString()
     {
-        return _name + " | " + _text;
+        StringBuilder s = new StringBuilder();
+        s.AppendLine($"Name: {_name}");
+        s.AppendLine($"Comment: {_text}");
+
+        return s.ToString();
     }
 }

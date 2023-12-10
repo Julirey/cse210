@@ -24,7 +24,19 @@ public class Video
     // Methods
     public string GetString()
     {
-        return $"Author: {_author}\nTitle: {_title}\nLength: {_length} seconds\nNumber of Comments: {GetCommentNumber()}";
+        StringBuilder s = new StringBuilder();
+        s.AppendLine($"Author: {_author}");
+        s.AppendLine($"Title: {_title}");
+        s.AppendLine($"Length: {_length}");
+        s.AppendLine($"Number of Comments: {GetCommentNumber()}");
+        s.AppendLine();
+
+        foreach (Comment comment in _comments)
+        {   
+            s.AppendLine($"{comment.GetString()}");
+        }
+
+        return s.ToString();
     }
 
     public void AddComment(string name, string text)
@@ -36,16 +48,5 @@ public class Video
     public int GetCommentNumber()
     {
         return _comments.Count;
-    }
-
-    public string GetCommentString()
-    {
-        StringBuilder s = new StringBuilder();
-        foreach (Comment comment in _comments)
-        {
-            s.AppendLine($"{comment.GetString()}");
-        }
-
-        return s.ToString();
     }
 }

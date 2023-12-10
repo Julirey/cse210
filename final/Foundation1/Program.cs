@@ -30,11 +30,8 @@ class Program
 
         foreach (Video v in videos)
         {
-            Console.WriteLine(v.GetString());
-            Console.WriteLine();
-            Console.WriteLine(v.GetCommentString());
+            Console.Write(v.GetString());
             Console.WriteLine("------------------------------------");
-            Console.WriteLine();
         }
     }
 }
