@@ -28,13 +28,6 @@ public class Address
     }
     public bool InUSA()
     {
-        if (_country == "usa" || _country == "USA")
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return _country.ToUpper() == "USA";
     }
 }

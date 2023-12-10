@@ -29,6 +29,10 @@ public class Customer
     }
     public string GetShippingInfo()
     {
-        return $"Name: {_name}\nAddress: {_address.GetAddress()}";
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine($"Name: {_name}");
+        sb.AppendLine($"Address: {_address.GetAddress()}");
+
+        return sb.ToString();
     }
 }

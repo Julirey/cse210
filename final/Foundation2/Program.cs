@@ -30,7 +30,6 @@ class Program
             Console.WriteLine();
             Console.WriteLine(o.GetPackingLabel());
             Console.WriteLine(o.GetShippingLabel());
-            Console.WriteLine();
             Console.WriteLine($"Products: ${o.GetProductCost()}");
             Console.WriteLine($"Shipping: ${o.GetShippingCost()}");
             Console.WriteLine($"Total:    ${o.GetProductCost() + o.GetShippingCost()}");
